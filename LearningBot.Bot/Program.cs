@@ -20,11 +20,11 @@ internal class Program
 
         var botSettings = GetBotSettings();
         var botClient = new TelegramBotClient(botSettings.Token);
-        var serviceProvider = SetupServiceProvider(botSettings.ConnectionString);
+        var serviceProvider = SetupServiceProvider(botSettings.ConnectionString, botClient);
         var updateHandler = serviceProvider.GetRequiredService<IUpdateHandler>();
         var receiverOptions = new ReceiverOptions
         {
-            AllowedUpdates = new UpdateType[] { UpdateType.Message },
+            AllowedUpdates = new UpdateType[] { UpdateType.Message, UpdateType.CallbackQuery },
             ThrowPendingUpdates = true,
         };
 
@@ -37,12 +37,14 @@ internal class Program
         cancellationTokenSource.Cancel();
     }
 
-    private static IServiceProvider SetupServiceProvider(string connectionString)
+    private static IServiceProvider SetupServiceProvider(string connectionString, TelegramBotClient botClient)
     {
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddRepositories(connectionString);
         serviceCollection.AddServices();
+        serviceCollection.AddSingleton<ITelegramBotClient>(botClient);
         serviceCollection.AddUpdateHandler();
+        serviceCollection.AddProcessors();
         return serviceCollection.BuildServiceProvider();
     }
 

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using LearningBot.Bot.Processors.Interfaces;
+using LearningBot.Bot.Processors.Models;
+using LearningBot.Logic.Services.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -10,17 +14,38 @@ namespace LearningBot.Bot;
 
 internal class UpdateHandler : IUpdateHandler
 {
+    private readonly IUserService _userService;
+    private readonly IEnumerable<IProcessor> _processors;
+
+    public UpdateHandler(IUserService userService, IEnumerable<IProcessor> processors)
+    {
+        _userService = userService;
+        _processors = processors;
+    }
+
     public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        if (update.Message.Text == null)
+        var chat = update.Message?.Chat ?? update.CallbackQuery.Message.Chat;
+        var user = await _userService.GetByChatId(chat.Id);
+        var input = update.Message?.Text ?? update.CallbackQuery.Data;
+        var languageCode = update.Message?.From.LanguageCode ?? update.CallbackQuery.From.LanguageCode;
+        foreach (var processor in _processors)
         {
-            return;
+            var isApplicable = processor.IsApplicable(input, user, update.Type);
+            if (isApplicable)
+            {
+                var parameters = new ProcessorParameters
+                {
+                    User = user,
+                    Input = input,
+                    Chat = chat,
+                    LanguageCode = languageCode,
+                };
+
+                await processor.Process(parameters);
+                return;
+            }
         }
-
-        Console.WriteLine($"Received a {update.Message.Text} message in chat {update.Message.Chat.Id}");
-
-        var replyMessage = $"You said\n{update.Message.Text}";
-        await botClient.SendTextMessageAsync(update.Message.Chat.Id, replyMessage, cancellationToken: cancellationToken);
     }
 
     public Task HandlePollingErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
