@@ -1,4 +1,7 @@
-﻿using LearningBot.DataAccess.Repositories.Interfaces;
+﻿using LearningBot.DataAccess.Queries;
+using LearningBot.DataAccess.Repositories.Interfaces;
+using LearningBot.Shared.Entities;
+using System.Threading.Tasks;
 
 namespace LearningBot.DataAccess.Repositories;
 
@@ -8,4 +11,20 @@ internal class UserRepository : RepositoryBase, IUserRepository
         : base(connectionString)
     {
     }
+
+    public async Task<User> GetByChatId(long chatId) => await QueryFirstOrDefaultAsync<User>(UserQueries.GetByChatId, new { ChatId = chatId });
+
+    public async Task Add(User user)
+    {
+        var parameters = new { user.ChatId, user.Forename, user.Surname, user.Email, Status = (int)user.Status, user.LanguageCode };
+        await ExecuteAsync(UserQueries.Add, parameters);
+    }
+
+    public async Task Update(User user)
+    {
+        var parameters = new { user.ChatId, user.Forename, user.Surname, user.Email, Status = (int)user.Status, user.LanguageCode, user.Id };
+        await ExecuteAsync(UserQueries.Update, parameters);
+    }
+
+    public async Task DeleteById(int id) => await ExecuteAsync(UserQueries.DeleteById, new { Id = id });
 }
