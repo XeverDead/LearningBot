@@ -1,4 +1,4 @@
-﻿namespace LearningBot.DataAccess.Queries;
+﻿namespace LearningBot.DataAccess.Repositories.Queries;
 
 internal static class UserQueries
 {

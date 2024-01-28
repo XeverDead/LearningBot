@@ -1,5 +1,5 @@
-﻿using LearningBot.DataAccess.Queries;
-using LearningBot.DataAccess.Repositories.Interfaces;
+﻿using LearningBot.DataAccess.Repositories.Interfaces;
+using LearningBot.DataAccess.Repositories.Queries;
 using LearningBot.Shared.Entities;
 using System.Threading.Tasks;
 
