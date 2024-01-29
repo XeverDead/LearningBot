@@ -1,4 +1,4 @@
-﻿namespace LearningBot.Bot;
+﻿namespace LearningBot.Bot.Models;
 
 internal class BotSettings
 {

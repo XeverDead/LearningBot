@@ -1,10 +1,11 @@
 ﻿using Telegram.Bot.Types;
+using User = LearningBot.Shared.Entities.User;
 
 namespace LearningBot.Bot.Processors.Models;
 
 internal class ProcessorParameters
 {
-    public Shared.Entities.User User { get; set; }
+    public User User { get; set; }
 
     public string Input { get; set; }
 

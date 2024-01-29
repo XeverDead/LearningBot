@@ -1,4 +1,5 @@
 ﻿using LearningBot.Bot.DependencyInjection;
+using LearningBot.Bot.Models;
 using LearningBot.DataAccess.DependencyInjection;
 using LearningBot.Logic.DependencyInjection;
 using Microsoft.Extensions.Configuration;

@@ -5,7 +5,7 @@ using Telegram.Bot.Polling;
 
 namespace LearningBot.Bot.DependencyInjection;
 
-public static class ServiceCollectionExtensions
+internal static class ServiceCollectionExtensions
 {
     public static void AddUpdateHandler(this IServiceCollection serviceCollection)
     {
