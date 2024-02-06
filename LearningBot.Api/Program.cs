@@ -13,7 +13,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var connectionString = builder.Configuration.GetConnectionString(ParameterKeys.ConnectionString);
+        var connectionString = builder.Configuration.GetConnectionString(SettingsKeys.ConnectionString);
         builder.Services.AddRepositories(connectionString);
         builder.Services.AddServices();
         builder.Services.AddControllers();
