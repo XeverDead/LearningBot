@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningBot.Bot", "Learning
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningBot.ApiClient", "LearningBot.ApiClient\LearningBot.ApiClient.csproj", "{29C3F87B-DA2E-4010-9F6E-67D4D293152B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBot.Api", "LearningBot.Api\LearningBot.Api.csproj", "{B2C202BA-DEC0-4552-BBFD-CAED7511CDF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningBot.Api", "LearningBot.Api\LearningBot.Api.csproj", "{B2C202BA-DEC0-4552-BBFD-CAED7511CDF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBot.UI", "LearningBot.UI\LearningBot.UI.csproj", "{6A025E1F-B9CE-4E5B-85C1-892A67DEE4A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{B2C202BA-DEC0-4552-BBFD-CAED7511CDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2C202BA-DEC0-4552-BBFD-CAED7511CDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2C202BA-DEC0-4552-BBFD-CAED7511CDF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A025E1F-B9CE-4E5B-85C1-892A67DEE4A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A025E1F-B9CE-4E5B-85C1-892A67DEE4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A025E1F-B9CE-4E5B-85C1-892A67DEE4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A025E1F-B9CE-4E5B-85C1-892A67DEE4A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
