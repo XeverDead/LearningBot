@@ -2,5 +2,5 @@
 
 internal static class SettingsKeys
 {
-    public const string ConnectionString = "SqlliteConnection";
+    public const string ConnectionString = "SqliteConnection";
 }

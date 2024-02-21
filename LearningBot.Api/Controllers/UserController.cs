@@ -1,5 +1,6 @@
 ﻿using LearningBot.Logic.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace LearningBot.Api.Controllers;
 
@@ -12,5 +13,12 @@ public class UserController : ControllerBase
     public UserController(IUserService userService)
     {
         _userService = userService;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllExceptNew()
+    {
+        var users = await _userService.GetAllExceptNew();
+        return Ok(users);
     }
 }

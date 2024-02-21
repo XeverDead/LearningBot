@@ -1,6 +1,7 @@
 ﻿using LearningBot.DataAccess.Repositories.Interfaces;
 using LearningBot.DataAccess.Repositories.Queries;
 using LearningBot.Shared.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LearningBot.DataAccess.Repositories;
@@ -27,4 +28,6 @@ internal class UserRepository : RepositoryBase, IUserRepository
     }
 
     public async Task DeleteById(int id) => await ExecuteAsync(UserQueries.DeleteById, new { Id = id });
+
+    public async Task<List<User>> GetAllExceptNew() => await QueryAsync<User>(UserQueries.GetAllExceptNew);
 }

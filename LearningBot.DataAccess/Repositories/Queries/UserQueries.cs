@@ -17,4 +17,9 @@ internal static class UserQueries
         WHERE Id = @Id";
 
     public const string DeleteById = "DELETE FROM User WHERE Id = @Id";
+
+    public const string GetAllExceptNew = @"
+        SELECT Id, ChatId, Forename, Surname, Email, Status, LanguageCode
+        FROM User
+        WHERE Status != 0";
 }
