@@ -1,5 +1,7 @@
 ﻿using LearningBot.ApiClient.DependencyInjection;
 using LearningBot.ApiClient.Models;
+using LearningBot.UI.DependencyInjection;
+using LearningBot.UI.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
@@ -19,7 +21,9 @@ public partial class App : Application
     {
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddResources(GetApiSettings());
-        serviceCollection.BuildServiceProvider();
+        serviceCollection.AddViewModels();
+
+        ServiceProviderContainer.ServiceProvider = serviceCollection.BuildServiceProvider();
     }
 
     private ApiSettings GetApiSettings()
@@ -32,6 +36,7 @@ public partial class App : Application
         var apiSettings = new ApiSettings
         {
             BaseUrl = apiSettingsSection[nameof(ApiSettings.BaseUrl)],
+            UserResourceSubPath = apiSettingsSection[nameof(ApiSettings.UserResourceSubPath)],
         };
 
         return apiSettings;
