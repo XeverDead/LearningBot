@@ -8,8 +8,7 @@ namespace LearningBot.DataAccess.Repositories;
 
 internal class UserRepository : RepositoryBase, IUserRepository
 {
-    public UserRepository(string connectionString)
-        : base(connectionString)
+    public UserRepository(string connectionString) : base(connectionString)
     {
     }
 

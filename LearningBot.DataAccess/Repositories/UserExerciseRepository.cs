@@ -4,8 +4,7 @@ namespace LearningBot.DataAccess.Repositories;
 
 internal class UserExerciseRepository : RepositoryBase, IUserExerciseRepository
 {
-    public UserExerciseRepository(string connectionString)
-        : base(connectionString)
+    public UserExerciseRepository(string connectionString) : base(connectionString)
     {
     }
 }
