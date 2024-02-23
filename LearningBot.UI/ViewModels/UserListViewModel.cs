@@ -2,9 +2,9 @@
 using LearningBot.Shared.Enums;
 using LearningBot.UI.Models;
 using LearningBot.UI.Utils;
+using LearningBot.UI.Views;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace LearningBot.UI.ViewModels;
 
@@ -59,6 +59,9 @@ internal class UserListViewModel : ViewModelBase
 
     private void ShowUserView()
     {
-        MessageBox.Show("Not implemented yet");
+        var userViewModel = ServiceProviderContainer.GetRequiredService<UserViewModel>();
+        userViewModel.User = SelectedUser;
+        var userView = new UserView(userViewModel);
+        Dialog.ShowDialog(userView);
     }
 }

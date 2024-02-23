@@ -1,4 +1,5 @@
 ﻿using LearningBot.Shared.Entities;
+using LearningBot.Shared.Enums;
 
 namespace LearningBot.UI.Models;
 
@@ -42,6 +43,16 @@ internal class UserModel : ModelBase<User>
         set
         {
             Entity.Email = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public UserStatus Status
+    {
+        get => Entity.Status;
+        set
+        {
+            Entity.Status = value;
             OnPropertyChanged();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using LearningBot.Logic.Services.Interfaces;
+using LearningBot.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -20,5 +21,12 @@ public class UserController : ControllerBase
     {
         var users = await _userService.GetAllExceptNew();
         return Ok(users);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] User user)
+    {
+        await _userService.Update(user);
+        return Ok();
     }
 }

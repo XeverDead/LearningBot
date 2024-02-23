@@ -19,5 +19,7 @@ internal class UserResource : IUserResource
 
     public async Task<List<User>> GetAllExceptNew() => await _apiClient.Get<List<User>>(GetPath());
 
+    public async Task Update(User user) => await _apiClient.Put(GetPath(), user);
+
     private string GetPath() => _apiSettings.BaseUrl + _apiSettings.UserResourceSubPath;
 }

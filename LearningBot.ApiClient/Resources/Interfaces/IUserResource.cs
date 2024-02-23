@@ -7,4 +7,6 @@ namespace LearningBot.ApiClient.Resources.Interfaces;
 public interface IUserResource
 {
     Task<List<User>> GetAllExceptNew();
+
+    Task Update(User user);
 }
