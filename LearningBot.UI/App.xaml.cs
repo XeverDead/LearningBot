@@ -22,6 +22,7 @@ public partial class App : Application
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddResources(GetApiSettings());
         serviceCollection.AddViewModels();
+        serviceCollection.AddViews();
 
         ServiceProviderContainer.ServiceProvider = serviceCollection.BuildServiceProvider();
     }

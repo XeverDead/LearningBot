@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LearningBot.UI.ViewModels;
 
-internal class UserViewModel : ViewModelBase
+public class UserViewModel : ViewModelBase
 {
     private readonly IUserResource _userResource;
+
+    private UserModel _user;
 
     private Command _saveCommand;
     private Command _approveCommand;
@@ -18,7 +20,15 @@ internal class UserViewModel : ViewModelBase
         _userResource = userResource;
     }
 
-    public UserModel User { get; set; }
+    public UserModel User
+    {
+        get => _user;
+        set
+        {
+            _user = value;
+            OnPropertyChanged();
+        }
+    }
 
     public Command SaveCommand => _saveCommand ??= new Command(async x => await Save());
 

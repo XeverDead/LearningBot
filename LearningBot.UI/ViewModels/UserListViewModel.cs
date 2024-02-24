@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LearningBot.UI.ViewModels;
 
-internal class UserListViewModel : ViewModelBase
+public class UserListViewModel : ViewModelBase
 {
     private readonly IUserResource _userResource;
 
@@ -35,7 +35,7 @@ internal class UserListViewModel : ViewModelBase
         }
     }
 
-    public Command EditUserCommand => _editUserCommand ??= new Command(x => ShowUserView(), x => SelectedUser != null);
+    public Command EditUserCommand => _editUserCommand ??= new Command(async x => await ShowUserPage(), x => SelectedUser != null);
 
     public async Task Init()
     {
@@ -57,11 +57,11 @@ internal class UserListViewModel : ViewModelBase
         }
     }
 
-    private void ShowUserView()
+    private async Task ShowUserPage()
     {
-        var userViewModel = ServiceProviderContainer.GetRequiredService<UserViewModel>();
-        userViewModel.User = SelectedUser;
-        var userView = new UserView(userViewModel);
+        var userView = ServiceProviderContainer.GetRequiredService<UserView>();
+        userView.ViewModel.User = SelectedUser;
         Dialog.ShowDialog(userView);
+        await Init();
     }
 }

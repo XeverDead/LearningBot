@@ -5,12 +5,12 @@ namespace LearningBot.UI.Views;
 
 public partial class UserView : Page
 {
-    internal UserView(UserViewModel viewModel)
+    public UserView(UserViewModel viewModel)
     {
         ViewModel = viewModel;
         DataContext = viewModel;
         InitializeComponent();
     }
 
-    internal UserViewModel ViewModel { get; set; }
+    internal UserViewModel ViewModel { get; }
 }

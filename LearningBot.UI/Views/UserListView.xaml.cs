@@ -6,14 +6,14 @@ namespace LearningBot.UI.Views;
 
 public partial class UserListView : Page
 {
-    internal UserListView(UserListViewModel viewModel)
+    public UserListView(UserListViewModel viewModel)
     {
         ViewModel = viewModel;
         DataContext = viewModel;
         InitializeComponent();
     }
 
-    internal UserListViewModel ViewModel { get; set; }
+    public UserListViewModel ViewModel { get; }
 
     protected override async void OnInitialized(EventArgs e)
     {

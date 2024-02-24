@@ -1,4 +1,5 @@
 ﻿using LearningBot.UI.ViewModels;
+using LearningBot.UI.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LearningBot.UI.DependencyInjection;
@@ -9,5 +10,11 @@ internal static class ServiceCollectionExtensions
     {
         serviceCollection.AddSingleton<UserListViewModel>();
         serviceCollection.AddSingleton<UserViewModel>();
+    }
+
+    public static void AddViews(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddSingleton<UserListView>();
+        serviceCollection.AddSingleton<UserView>();
     }
 }

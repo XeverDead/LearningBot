@@ -3,7 +3,7 @@ using LearningBot.Shared.Enums;
 
 namespace LearningBot.UI.Models;
 
-internal class UserModel : ModelBase<User>
+public class UserModel : ModelBase<User>
 {
     public UserModel() : base()
     {

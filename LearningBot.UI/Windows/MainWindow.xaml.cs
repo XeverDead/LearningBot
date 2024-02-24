@@ -1,5 +1,4 @@
 ﻿using LearningBot.UI.Utils;
-using LearningBot.UI.ViewModels;
 using LearningBot.UI.Views;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,12 +10,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var viewModel = ServiceProviderContainer.GetRequiredService<UserListViewModel>();
-        var userListView = new UserListView(viewModel);
+        var view = ServiceProviderContainer.GetRequiredService<UserListView>();
         var userListTab = new TabItem
         {
-            Header = userListView.Title,
-            Content = new Frame { Content = userListView },
+            Header = view.Title,
+            Content = new Frame { Content = view },
         };
 
         Tabs.Items.Add(userListTab);

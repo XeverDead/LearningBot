@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace LearningBot.UI.Models;
 
-internal class ModelBase<T> : INotifyPropertyChanged
+public class ModelBase<T> : INotifyPropertyChanged
 {
     public ModelBase()
     {

@@ -4,7 +4,7 @@ namespace LearningBot.UI.Windows;
 
 public partial class DialogWindow : Window
 {
-    internal DialogWindow()
+    public DialogWindow()
     {
         InitializeComponent();
     }
