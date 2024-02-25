@@ -10,13 +10,21 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var view = ServiceProviderContainer.GetRequiredService<UserListView>();
-        var userListTab = new TabItem
+
+        var userListView = ServiceProviderContainer.GetRequiredService<UserListView>();
+        var courseListView = ServiceProviderContainer.GetRequiredService<CourseListView>();
+        AddTab(userListView);
+        AddTab(courseListView);
+    }
+
+    private void AddTab(Page page)
+    {
+        var tab = new TabItem
         {
-            Header = view.Title,
-            Content = new Frame { Content = view },
+            Header = page.Title,
+            Content = new Frame { Content = page },
         };
 
-        Tabs.Items.Add(userListTab);
+        Tabs.Items.Add(tab);
     }
 }

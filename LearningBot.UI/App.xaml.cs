@@ -38,6 +38,7 @@ public partial class App : Application
         {
             BaseUrl = apiSettingsSection[nameof(ApiSettings.BaseUrl)],
             UserResourceSubPath = apiSettingsSection[nameof(ApiSettings.UserResourceSubPath)],
+            CourseResourceSubPath = apiSettingsSection[nameof(ApiSettings.CourseResourceSubPath)],
         };
 
         return apiSettings;

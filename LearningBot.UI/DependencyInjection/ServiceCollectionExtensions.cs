@@ -10,11 +10,13 @@ internal static class ServiceCollectionExtensions
     {
         serviceCollection.AddSingleton<UserListViewModel>();
         serviceCollection.AddSingleton<UserViewModel>();
+        serviceCollection.AddSingleton<CourseListViewModel>();
     }
 
     public static void AddViews(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton<UserListView>();
         serviceCollection.AddSingleton<UserView>();
+        serviceCollection.AddSingleton<CourseListView>();
     }
 }

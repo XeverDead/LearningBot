@@ -1,0 +1,28 @@
+﻿<Page x:Class="LearningBot.UI.Views.CourseListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="CourseListView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Courses}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedCourse}"/>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding CreateCourseCommand}" Content="Create Course"/>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding EditCourseCommand}" Content="Edit Course"/>
+        </Grid>
+    </Grid>
+</Page>
